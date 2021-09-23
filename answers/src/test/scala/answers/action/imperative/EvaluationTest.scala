@@ -1,6 +1,7 @@
 package answers.action.imperative
 
 import org.scalatest.funsuite.AnyFunSuite
+import annotation.nowarn
 
 class EvaluationTest extends AnyFunSuite {
 
@@ -8,9 +9,9 @@ class EvaluationTest extends AnyFunSuite {
     var counter = 0
     val action  = counter += 1
     assert(counter == 1)
-    action
+    action: @nowarn
     assert(counter == 1)
-    action
+    action: @nowarn
     assert(counter == 1)
   }
 

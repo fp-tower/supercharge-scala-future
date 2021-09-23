@@ -1,6 +1,7 @@
 package answers.action.async
 
 import java.util.concurrent.CountDownLatch
+import scala.annotation.nowarn
 import scala.concurrent.duration.FiniteDuration
 import scala.concurrent.{ExecutionContext, Promise, TimeoutException}
 import scala.util.{Failure, Success, Try}
@@ -105,8 +106,8 @@ sealed trait IO[+A] {
   def race[Other](other: IO[Other])(ec: ExecutionContext): IO[Either[A, Other]] =
     async { callback =>
       val promise = Promise[Either[A, Other]]()
-      ec.execute(() => this.map(Left(_)).unsafeRunAsync(promise.tryComplete))
-      ec.execute(() => other.map(Right(_)).unsafeRunAsync(promise.tryComplete))
+      ec.execute(() => this.map(Left(_)).unsafeRunAsync(promise.tryComplete)): @nowarn
+      ec.execute(() => other.map(Right(_)).unsafeRunAsync(promise.tryComplete)): @nowarn
       promise.future.onComplete(callback)(ec)
     }
 
