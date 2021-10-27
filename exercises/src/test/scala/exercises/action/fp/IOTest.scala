@@ -68,6 +68,7 @@ class IOTest extends AnyFunSuite with ScalaCheckDrivenPropertyChecks {
   // PART 3: Error handling
   //////////////////////////////////////////////
 
+  // in video 13, the next line is not there - instead, there are two tests for onError - see screenshot in PR
   test("onError") {}
 
   ignore("retry, maxAttempt must be greater than 0") {
