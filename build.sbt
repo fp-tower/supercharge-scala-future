@@ -1,6 +1,6 @@
 import Dependencies._
 
-ThisBuild / scalaVersion := "2.13.6"
+ThisBuild / scalaVersion := "2.13.7"
 ThisBuild / libraryDependencies := Seq(scalatest)
 ThisBuild / scalacOptions := Seq(
   "-deprecation",
